@@ -11,19 +11,22 @@ use std::path::{Path, PathBuf};
 use std::str::FromStr;
 use std::time::{Duration, Instant};
 
-use ckb_sdk::bip32::{ChainCode, ChildNumber, DerivationPath, ExtendedPrivKey, ExtendedPubKey};
 use chrono::{Datelike, Timelike, Utc};
-use ckb_crypto::secp::SECP256K1;
-use ckb_hash::blake2b_256;
-use ckb_types::{H160, H256};
 use faster_hex::{hex_decode, hex_string};
 use rand::Rng;
 use secp256k1::recovery::RecoverableSignature;
 use uuid::Uuid;
 
+use ckb_crypto::secp::SECP256K1;
+use ckb_hash::blake2b_256;
+use ckb_sdk::{
+    bip32::{ChainCode, ChildNumber, DerivationPath, ExtendedPrivKey, ExtendedPubKey},
+    util::{zeroize_privkey, zeroize_slice},
+};
+use ckb_types::{H160, H256};
+
 pub use error::Error;
 pub use passphrase::{CipherParams, Crypto, KdfParams, ScryptParams, ScryptType};
-pub use util::{zeroize_privkey, zeroize_slice};
 
 const KEYSTORE_VERSION: u32 = 3;
 // FIXME: remove this
