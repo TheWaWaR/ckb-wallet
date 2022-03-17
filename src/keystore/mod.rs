@@ -11,7 +11,7 @@ use std::path::{Path, PathBuf};
 use std::str::FromStr;
 use std::time::{Duration, Instant};
 
-use ckb_sdk::wallet::{ChainCode, ChildNumber, DerivationPath, ExtendedPrivKey, ExtendedPubKey};
+use ckb_sdk::bip32::{ChainCode, ChildNumber, DerivationPath, ExtendedPrivKey, ExtendedPubKey};
 use chrono::{Datelike, Timelike, Utc};
 use ckb_crypto::secp::SECP256K1;
 use ckb_hash::blake2b_256;

@@ -337,7 +337,7 @@ impl Crypto {
     }
 
     fn check_password_inner(&self, kdf_key: &[u8; 32]) -> bool {
-        self.mac == calculate_mac(&self.ciphertext, &kdf_key)
+        self.mac == calculate_mac(&self.ciphertext, kdf_key)
     }
 
     pub fn check_password(&self, password: &[u8]) -> Result<bool, Error> {
