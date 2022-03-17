@@ -19,7 +19,7 @@ rand = "0.7.3"
 tiny-keccak = "1.4"
 uuid = { version = "0.7.4", features = ["v4"] }
 chrono = "0.4"
-failure = "0.1.5"
+thiserror = "1.0.30"
 
 ckb-types = "=0.101.4"
 ckb-hash = "=0.101.4"

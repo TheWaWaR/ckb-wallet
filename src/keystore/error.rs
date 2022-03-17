@@ -1,50 +1,50 @@
 use std::io;
 
 use ckb_types::H160;
-use failure::Fail;
+use thiserror::Error;
 
-#[derive(Debug, Fail, Eq, PartialEq)]
+#[derive(Error, Debug, Eq, PartialEq)]
 pub enum Error {
-    #[fail(display = "Account locked: {:x}", _0)]
+    #[error("Account locked: {0:x}")]
     AccountLocked(H160),
 
-    #[fail(display = "Account not found: {:x}", _0)]
+    #[error("Account not found: {0:x}")]
     AccountNotFound(H160),
 
-    #[fail(display = "Key mismatch, got {:x}, expected: {:x}", got, expected)]
+    #[error("Key mismatch, got {got:x}, expected: {expected:x}")]
     KeyMismatch { got: H160, expected: H160 },
 
-    #[fail(display = "Key already exists {:x}", _0)]
+    #[error("Key already exists {0:x}")]
     KeyExists(H160),
 
-    #[fail(display = "Wrong password for {:x}", _0)]
+    #[error("Wrong password for {0:x}")]
     WrongPassword(H160),
 
-    #[fail(display = "Check password failed")]
+    #[error("Check password failed")]
     CheckPasswordFailed,
 
-    #[fail(display = "Parse json failed: {}", _0)]
+    #[error("Parse json failed: {0}")]
     ParseJsonFailed(String),
 
-    #[fail(display = "Unsupported cipher: {}", _0)]
+    #[error("Unsupported cipher: {0}")]
     UnsupportedCipher(String),
 
-    #[fail(display = "Unsupported kdf: {}", _0)]
+    #[error("Unsupported kdf: {0}")]
     UnsupportedKdf(String),
 
-    #[fail(display = "Generate secp256k1 secret failed, tried: {}", _0)]
+    #[error("Generate secp256k1 secret failed, tried: {0}")]
     GenSecpFailed(u16),
 
-    #[fail(display = "Invalid secp256k1 secret key")]
+    #[error("Invalid secp256k1 secret key")]
     InvalidSecpSecret,
 
-    #[fail(display = "Search derived address failed")]
+    #[error("Search derived address failed")]
     SearchDerivedAddrFailed,
 
-    #[fail(display = "IO error: {}", _0)]
+    #[error("IO error: {0}")]
     Io(String),
 
-    #[fail(display = "Other error: {}", _0)]
+    #[error("Other error: {0}")]
     Other(String),
 }
 
