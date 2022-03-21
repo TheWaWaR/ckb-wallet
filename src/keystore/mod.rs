@@ -1,7 +1,7 @@
 mod error;
 mod passphrase;
+pub(crate) mod signer;
 mod util;
-pub(crate) mod wallet;
 
 use std::collections::hash_map::Entry;
 use std::collections::HashMap;
