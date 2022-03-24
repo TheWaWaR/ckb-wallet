@@ -10,7 +10,7 @@ use ckb_types::{bytes::Bytes, core::TransactionView, H160, H256};
 
 use super::{KeyChain, KeyStore, KeyTimeout};
 
-/// A wallet use filesystem keystore as backend.
+/// A signer use filesystem keystore as backend.
 pub struct FileSystemKeystoreSigner {
     keystore: Arc<Mutex<KeyStore>>,
     hd_ids: HashMap<H160, (DerivationPath, Option<KeyChain>)>,
@@ -61,7 +61,7 @@ impl FileSystemKeystoreSigner {
         Ok(())
     }
     fn get_id_info(&self, id: &[u8]) -> Option<(H160, DerivationPath, Option<KeyChain>)> {
-        if id.len() != 16 {
+        if id.len() != 20 {
             return None;
         }
         let mut buf = [0u8; 20];
@@ -92,7 +92,7 @@ impl Signer for FileSystemKeystoreSigner {
         let (hash160, path, _key_chain) = self.get_id_info(id).ok_or(SignerError::IdNotFound)?;
         if message.len() != 32 {
             return Err(SignerError::InvalidMessage(format!(
-                "expected: 32, got: {}",
+                "expected length: 32, got: {}",
                 message.len()
             )));
         }
