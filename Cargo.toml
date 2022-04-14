@@ -26,4 +26,4 @@ ckb-types = "=0.101.4"
 ckb-hash = "=0.101.4"
 ckb-crypto = { version = "=0.101.4", features = ["secp"] }
 
-ckb-sdk = { git = "https://github.com/TheWaWaR/ckb-sdk.git" }
+ckb-sdk = { git = "https://github.com/TheWaWaR/ckb-sdk-rust.git" }
