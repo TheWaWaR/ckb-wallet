@@ -4,8 +4,8 @@ version = "0.1.0"
 edition = "2021"
 license = "MIT"
 description = "Wallet SDK for Nervos CKB"
-homepage = "https://github.com/TheWaWaR/ckb-wallet"
-repository = "https://github.com/TheWaWaR/ckb-wallet"
+homepage = "https://github.com/cryptape/ckb-wallet"
+repository = "https://github.com/cryptape/ckb-wallet"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -26,4 +26,4 @@ ckb-types = "=0.101.4"
 ckb-hash = "=0.101.4"
 ckb-crypto = { version = "=0.101.4", features = ["secp"] }
 
-ckb-sdk = { git = "https://github.com/TheWaWaR/ckb-sdk-rust.git" }
+ckb-sdk = { git = "https://github.com/cryptape/ckb-sdk-rust.git" }
