@@ -22,8 +22,8 @@ chrono = "0.4"
 thiserror = "1.0.30"
 parking_lot = "0.11"
 
-ckb-types = "=0.101.4"
-ckb-hash = "=0.101.4"
-ckb-crypto = { version = "=0.101.4", features = ["secp"] }
+ckb-types = "=0.103.0"
+ckb-hash = "=0.103.0"
+ckb-crypto = { version = "=0.103.0", features = ["secp"] }
 
 ckb-sdk = { git = "https://github.com/cryptape/ckb-sdk-rust.git" }
