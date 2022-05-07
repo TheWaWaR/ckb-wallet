@@ -488,7 +488,7 @@ mod tests {
     #[test]
     fn check_password() {
         let data = test_data();
-        assert_eq!(data.crypto.check_password(&data.password).unwrap(), true);
-        assert_eq!(data.crypto.check_password(b"xyz.1234").unwrap(), false);
+        assert!(data.crypto.check_password(&data.password).unwrap());
+        assert!(!data.crypto.check_password(b"xyz.1234").unwrap());
     }
 }

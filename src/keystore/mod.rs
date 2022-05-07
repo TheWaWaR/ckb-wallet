@@ -911,7 +911,7 @@ impl Drop for MasterPrivKey {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::Address;
+    use ckb_sdk::Address;
     use ckb_types::{h160, h256};
 
     #[test]
