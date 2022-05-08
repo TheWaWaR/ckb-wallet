@@ -3,7 +3,7 @@ use std::sync::Arc;
 
 use parking_lot::Mutex;
 
-use ckb_sdk::bip32::DerivationPath;
+use bitcoin::util::bip32::DerivationPath;
 use ckb_sdk::traits::{Signer, SignerError};
 use ckb_sdk::util::serialize_signature;
 use ckb_types::{bytes::Bytes, core::TransactionView, H160, H256};
@@ -47,7 +47,7 @@ impl FileSystemKeystoreSigner {
         let ckb_root = ckb_root_opt
             .ok_or_else(|| SignerError::Other("master key not found".to_string().into()))?;
         self.hd_ids
-            .insert(hash160.clone(), (DerivationPath::empty(), None));
+            .insert(hash160.clone(), (DerivationPath::default(), None));
 
         let key_set = ckb_root.derived_key_set_by_index(0, external_len, 0, change_len);
         for (path, pubkey_hash) in key_set.external {
@@ -71,7 +71,7 @@ impl FileSystemKeystoreSigner {
             return Some((hash160, path.clone(), *key_chain));
         }
         if self.keystore.lock().has_account(&hash160, true) {
-            return Some((hash160, DerivationPath::empty(), None));
+            return Some((hash160, DerivationPath::default(), None));
         }
         None
     }
